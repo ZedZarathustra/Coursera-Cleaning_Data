@@ -49,8 +49,8 @@ tot_x_trn <- read.table("total_acc_x_train.txt")
 tot_y_trn <- read.table("total_acc_y_train.txt")
 tot_z_trn <- read.table("total_acc_z_train.txt")
 
-## Combine files - FIX THIS
-all_files <- cbind(acc_x_tst, acc_y_tst, acc_z_tst, 
+## Combine files
+all_files <- rbind(acc_x_tst, acc_y_tst, acc_z_tst, 
                    gyro_x_tst, gyro_y_tst, gyro_z_tst,
                    tot_x_tst, tot_y_tst, tot_z_tst,
                    acc_x_trn, acc_y_trn, acc_z_trn,

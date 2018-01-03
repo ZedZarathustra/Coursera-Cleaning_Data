@@ -30,21 +30,29 @@ library(xlsx)
 setwd("~/R/Coursera/Coursera-Cleaning_Data")
 
 ## Read data files
-acc_x_tst <- read.csv("body_acc_x_test.txt")
-acc_y_tst <- read.csv("body_acc_y_test.txt")
-acc_z_tst <- read.csv("body_acc_z_test.txt")
-gyro_x_tst <- read.csv("body_gyro_x_test.txt")
-gyro_y_tst <- read.csv("body_gyro_y_test.txt")
-gyro_z_tst <- read.csv("body_gyro_z_test.txt")
-tot_x_tst <- read.csv("total_acc_x_test.txt")
-tot_y_tst <- read.csv("total_acc_y_test.txt")
-tot_z_tst <- read.csv("total_acc_z_test.txt")
-acc_x_trn <- read.csv("body_acc_x_train.txt")
-acc_y_trn <- read.csv("body_acc_y_train.txt")
-acc_z_trn <- read.csv("body_acc_z_train.txt")
-gyro_x_trn <- read.csv("body_gyro_x_train.txt")
-gyro_y_trn <- read.csv("body_gyro_y_train.txt")
-gyro_z_trn <- read.csv("body_gyro_z_train.txt")
-tot_x_trn <- read.csv("total_acc_x_train.txt")
-tot_y_trn <- read.csv("total_acc_y_train.txt")
-tot_z_trn <- read.csv("total_acc_z_train.txt")
+acc_x_tst <- read.table("body_acc_x_test.txt")
+acc_y_tst <- read.table("body_acc_y_test.txt")
+acc_z_tst <- read.table("body_acc_z_test.txt")
+gyro_x_tst <- read.table("body_gyro_x_test.txt")
+gyro_y_tst <- read.table("body_gyro_y_test.txt")
+gyro_z_tst <- read.table("body_gyro_z_test.txt")
+tot_x_tst <- read.table("total_acc_x_test.txt")
+tot_y_tst <- read.table("total_acc_y_test.txt")
+tot_z_tst <- read.table("total_acc_z_test.txt")
+acc_x_trn <- read.table("body_acc_x_train.txt")
+acc_y_trn <- read.table("body_acc_y_train.txt")
+acc_z_trn <- read.table("body_acc_z_train.txt")
+gyro_x_trn <- read.table("body_gyro_x_train.txt")
+gyro_y_trn <- read.table("body_gyro_y_train.txt")
+gyro_z_trn <- read.table("body_gyro_z_train.txt")
+tot_x_trn <- read.table("total_acc_x_train.txt")
+tot_y_trn <- read.table("total_acc_y_train.txt")
+tot_z_trn <- read.table("total_acc_z_train.txt")
+
+## Combine files - FIX THIS
+all_files <- cbind(acc_x_tst, acc_y_tst, acc_z_tst, 
+                   gyro_x_tst, gyro_y_tst, gyro_z_tst,
+                   tot_x_tst, tot_y_tst, tot_z_tst,
+                   acc_x_trn, acc_y_trn, acc_z_trn,
+                   gyro_x_trn, gyro_y_trn, gyro_z_trn,
+                   tot_x_trn, tot_y_trn, tot_z_trn)

@@ -21,5 +21,8 @@
 ## Any commercial use is prohibited. Jorge L. Reyes-Ortiz, Alessandro Ghio,
 ## Luca Oneto, Davide Anguita. November 2012.
 
-pkgs <- c("dplyr", "lubridate", "readxl", "tidyr", "xlsx")
+library(dplyr, "lubridate", "readxl", "tidyr", "xlsx")
+for(i in 1:length(pkgs)) {
+     library(pkgs[i])   
+     } 
 setwd ("C:/Users/sdzwick/Documents/R/Coursera/Getting-Cleaning Data")

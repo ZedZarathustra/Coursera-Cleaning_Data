@@ -21,8 +21,30 @@
 ## Any commercial use is prohibited. Jorge L. Reyes-Ortiz, Alessandro Ghio,
 ## Luca Oneto, Davide Anguita. November 2012.
 
-library(dplyr, "lubridate", "readxl", "tidyr", "xlsx")
-for(i in 1:length(pkgs)) {
-     library(pkgs[i])   
-     } 
-setwd ("C:/Users/sdzwick/Documents/R/Coursera/Getting-Cleaning Data")
+library(dplyr)
+library(lubridate)
+library(readxl)
+library(tidyr)
+library(xlsx)
+
+setwd("~/R/Coursera/Coursera-Cleaning_Data")
+
+## Read data files
+acc_x_tst <- read.csv("body_acc_x_test.txt")
+acc_y_tst <- read.csv("body_acc_y_test.txt")
+acc_z_tst <- read.csv("body_acc_z_test.txt")
+gyro_x_tst <- read.csv("body_gyro_x_test.txt")
+gyro_y_tst <- read.csv("body_gyro_y_test.txt")
+gyro_z_tst <- read.csv("body_gyro_z_test.txt")
+tot_x_tst <- read.csv("total_acc_x_test.txt")
+tot_y_tst <- read.csv("total_acc_y_test.txt")
+tot_z_tst <- read.csv("total_acc_z_test.txt")
+acc_x_trn <- read.csv("body_acc_x_train.txt")
+acc_y_trn <- read.csv("body_acc_y_train.txt")
+acc_z_trn <- read.csv("body_acc_z_train.txt")
+gyro_x_trn <- read.csv("body_gyro_x_train.txt")
+gyro_y_trn <- read.csv("body_gyro_y_train.txt")
+gyro_z_trn <- read.csv("body_gyro_z_train.txt")
+tot_x_trn <- read.csv("total_acc_x_train.txt")
+tot_y_trn <- read.csv("total_acc_y_train.txt")
+tot_z_trn <- read.csv("total_acc_z_train.txt")

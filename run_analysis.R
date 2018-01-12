@@ -55,7 +55,10 @@ ydata_df$Activity <- acc_labs[ydata_df$Act_No]
 ydata_df <- ydata_df$Activity
 ##
 ## x data
+##
 xdata_df <- rbind(x_tst, x_trn)
 colnames(xdata_df) <- features
 ##
+##combine files
 proj_df <- cbind(subj_df, ydata_df, xdata_df)
+colnames(proj_df)[2] <- "Activity"

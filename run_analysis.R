@@ -59,6 +59,12 @@ ydata_df <- ydata_df$Activity
 xdata_df <- rbind(x_tst, x_trn)
 colnames(xdata_df) <- features
 ##
-##combine files
+## combine files
+##
 proj_df <- cbind(subj_df, ydata_df, xdata_df)
 colnames(proj_df)[2] <- "Activity"
+##
+## remove columns except for mean()
+##
+proj1_df <- proj_df[grepl("*mean()*", names(proj_df))]
+proj1_df <- proj1_df[!grepl("*freq*", names(proj1_df))] ##didn't work!

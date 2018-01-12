@@ -31,6 +31,7 @@ setwd("~/R/Coursera/Coursera-Cleaning_Data")
 
 ## Read data files
 acc_labs <- read.table("activity_labels.txt")
+acc_labs <- acc_labs[,2]                     ##Remove Col1 to read in names
 features <- read.table("features.txt")
 features <- features[,2]
 subj_tst <- read.table("subject_test.txt")
@@ -40,12 +41,21 @@ x_trn <- read.table("X_train.txt")
 y_tst <- read.table("Y_test.txt")
 y_trn <- read.table("Y_train.txt")
 ##
-## Combine files
+## subject data
 ##
 subj_df <- rbind(subj_tst, subj_trn)
 colnames(subj_df) <- "Subject"
+##
+## y data
+##
 ydata_df <- rbind(y_tst, y_trn)
-colnames(ydata_df) <- "Activity"
+ydata_df[, 2] <- acc_labs[match(ydata_df[,1])]
+colnames(ydata_df) <- "Act_No"
+ydata_df$Activity <- acc_labs[ydata_df$Act_No]
+ydata_df <- ydata_df$Activity
+##
+## x data
 xdata_df <- rbind(x_tst, x_trn)
 colnames(xdata_df) <- features
+##
 proj_df <- cbind(subj_df, ydata_df, xdata_df)

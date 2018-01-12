@@ -62,7 +62,7 @@ setwd("~/R/Coursera/Coursera-Cleaning_Data")
      ## remove columns except for mean()
      ##
           xdata1_df <- xdata_df[grepl("*mean()*", names(xdata_df))]
-          xdata1_df <- xdata1_df[!grepl("*meanFreq*", names(xdata_df))]##
+          xdata1_df <- xdata1_df[!grepl("*meanFreq*", names(xdata1_df))]##
      ##
      ## remove columns except for std()
      ##

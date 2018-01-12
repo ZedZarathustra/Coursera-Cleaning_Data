@@ -67,4 +67,4 @@ colnames(proj_df)[2] <- "Activity"
 ## remove columns except for mean()
 ##
 proj1_df <- proj_df[grepl("*mean()*", names(proj_df))]
-proj1_df <- proj1_df[!grepl("*freq*", names(proj1_df))] ##didn't work!
+proj1_df <- proj1_df[!grepl("*meanFreq*", names(proj1_df))]

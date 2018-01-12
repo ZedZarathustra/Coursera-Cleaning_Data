@@ -30,41 +30,50 @@ library(xlsx)
 setwd("~/R/Coursera/Coursera-Cleaning_Data")
 
 ## Read data files
-acc_labs <- read.table("activity_labels.txt")
-acc_labs <- acc_labs[,2]                     ##Remove Col1 to read in names
-features <- read.table("features.txt")
-features <- features[,2]
-subj_tst <- read.table("subject_test.txt")
-subj_trn <- read.table("subject_train.txt")
-x_tst <- read.table("X_test.txt")
-x_trn <- read.table("X_train.txt")
-y_tst <- read.table("Y_test.txt")
-y_trn <- read.table("Y_train.txt")
+     acc_labs <- read.table("activity_labels.txt")
+     acc_labs <- acc_labs[,2]                     ##Remove Col1 to read in names
+     features <- read.table("features.txt")
+     features <- features[,2]
+     subj_tst <- read.table("subject_test.txt")
+     subj_trn <- read.table("subject_train.txt")
+     x_tst <- read.table("X_test.txt")
+     x_trn <- read.table("X_train.txt")
+     y_tst <- read.table("Y_test.txt")
+     y_trn <- read.table("Y_train.txt")
 ##
 ## subject data
 ##
-subj_df <- rbind(subj_tst, subj_trn)
-colnames(subj_df) <- "Subject"
+     subj_df <- rbind(subj_tst, subj_trn)
+     colnames(subj_df) <- "Subject"
 ##
 ## y data
 ##
-ydata_df <- rbind(y_tst, y_trn)
-ydata_df[, 2] <- acc_labs[match(ydata_df[,1])]
-colnames(ydata_df) <- "Act_No"
-ydata_df$Activity <- acc_labs[ydata_df$Act_No]
-ydata_df <- ydata_df$Activity
+     ydata_df <- rbind(y_tst, y_trn)
+     ydata_df[, 2] <- acc_labs[match(ydata_df[,1])]
+     colnames(ydata_df) <- "Act_No"
+     ydata_df$Activity <- acc_labs[ydata_df$Act_No]
+     ydata_df <- ydata_df$Activity
 ##
 ## x data
 ##
-xdata_df <- rbind(x_tst, x_trn)
-colnames(xdata_df) <- features
+     xdata_df <- rbind(x_tst, x_trn)
+     colnames(xdata_df) <- features
+     ##
+     ## remove columns except for mean()
+     ##
+          xdata1_df <- xdata_df[grepl("*mean()*", names(xdata_df))]
+          xdata1_df <- xdata1_df[!grepl("*meanFreq*", names(xdata_df))]##
+     ##
+     ## remove columns except for std()
+     ##
+          xdata2_df <- xdata_df[grepl("*std()*", names(xdata_df))]
+     ##
+     ## combine xdata files
+     ##
+          xdatafin_df <-cbind(xdata1_df, xdata2_df)
 ##
-## combine files
+## combine all files
 ##
-proj_df <- cbind(subj_df, ydata_df, xdata_df)
-colnames(proj_df)[2] <- "Activity"
-##
-## remove columns except for mean()
-##
-proj1_df <- proj_df[grepl("*mean()*", names(proj_df))]
-proj1_df <- proj1_df[!grepl("*meanFreq*", names(proj1_df))]
+     proj_df <- cbind(subj_df, ydata_df, xdatafin_df)
+     colnames(proj_df)[2] <- "Activity"
+

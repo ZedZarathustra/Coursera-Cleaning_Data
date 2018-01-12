@@ -42,5 +42,6 @@ y_trn <- read.table("Y_train.txt")
 ## Combine files
 ##
 subj_df <- rbind(subj_tst, subj_trn)
+ydata_df <- rbind(y_tst, y_trn)
 xdata_df <- rbind(x_tst, x_trn)
-proj_df <- cbind(subj_df, xdata_df)
+proj_df <- cbind(subj_df, ydata_df, xdata_df)

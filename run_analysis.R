@@ -48,11 +48,11 @@ setwd("~/R/Coursera/Coursera-Cleaning_Data")
 ##
 ## y data
 ##
-     ydata_df <- rbind(y_tst, y_trn)
+     Activity <- rbind(y_tst, y_trn)
      ##ydata_df[,2] <- acc_labs[match(ydata_df[,1])]
-     colnames(ydata_df) <- "Act_No"
-     ydata_df$Activity <- acc_labs[ydata_df$Act_No]
-##     ydata_df <- ydata_df$Activity ## don't remove until after mean calc
+     colnames(Activity) <- "Act_No"
+     Activity$Activity <- acc_labs[Activity$Act_No]
+     Activity <- Activity$Activity
 ##
 ## x data
 ##
@@ -74,14 +74,11 @@ setwd("~/R/Coursera/Coursera-Cleaning_Data")
 ##
 ## combine all files
 ##
-     proj_df <- cbind(subj_df, ydata_df, xdatafin_df)
+     proj_df <- cbind(subj_df, Activity, xdatafin_df)
 ##
-## sort by Subject & Act_No
+## arrange/sort/summarize
 ##
-     proj_df <- arrange(proj_df, Subject, Act_No)
-     proj_df <- group_by(proj_df, Subject, Act_No)
-     
-     
-     
-     write.csv(proj_df, file = "proj_df.csv")
-     
+     proj_df <- arrange(proj_df, Subject, Activity)
+     ProjMean <- proj_df %>% 
+          group_by(Subject, Activity) %>%
+          summarize_all(funs(mean))

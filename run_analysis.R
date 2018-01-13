@@ -84,4 +84,4 @@ setwd("~/R/Coursera/Coursera-Cleaning_Data")
 ##
 ## write results
 ## 
-     write.table(ProjMean, "ProjMean.txt", sep="\t")
+     write.table(ProjMean, "ProjMean.txt", sep="\t", row.name=FALSE)

@@ -79,7 +79,7 @@ setwd("~/R/Coursera/Coursera-Cleaning_Data")
 ## sort by Subject & Act_No
 ##
      proj_df <- arrange(proj_df, Subject, Act_No)
-
+     proj_df <- group_by(proj_df, Subject, Act_No)
      
      
      

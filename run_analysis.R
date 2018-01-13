@@ -49,10 +49,10 @@ setwd("~/R/Coursera/Coursera-Cleaning_Data")
 ## y data
 ##
      ydata_df <- rbind(y_tst, y_trn)
-     ydata_df[, 2] <- acc_labs[match(ydata_df[,1])]
+     ##ydata_df[,2] <- acc_labs[match(ydata_df[,1])]
      colnames(ydata_df) <- "Act_No"
      ydata_df$Activity <- acc_labs[ydata_df$Act_No]
-     ydata_df <- ydata_df$Activity
+##     ydata_df <- ydata_df$Activity ## don't remove until after mean calc
 ##
 ## x data
 ##
@@ -75,5 +75,13 @@ setwd("~/R/Coursera/Coursera-Cleaning_Data")
 ## combine all files
 ##
      proj_df <- cbind(subj_df, ydata_df, xdatafin_df)
-     colnames(proj_df)[2] <- "Activity"
+##
+## sort by Subject & Act_No
+##
+     proj_df <- arrange(proj_df, Subject, Act_No)
 
+     
+     
+     
+     write.csv(proj_df, file = "proj_df.csv")
+     

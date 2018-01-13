@@ -81,3 +81,7 @@ setwd("~/R/Coursera/Coursera-Cleaning_Data")
      ProjMean <- proj_df %>% 
           group_by(Subject, Activity) %>%
           summarize_all(funs(mean))
+##
+## write results
+## 
+     write.table(ProjMean, "ProjMean.txt", sep="\t")

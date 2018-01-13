@@ -25,7 +25,6 @@ library(dplyr)
 library(lubridate)
 library(readxl)
 library(tidyr)
-library(xlsx)
 
 setwd("~/R/Coursera/Coursera-Cleaning_Data")
 
